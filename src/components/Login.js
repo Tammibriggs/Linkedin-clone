@@ -1,9 +1,17 @@
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+import {signInApi} from '../actions'
+import {Navigate} from 'react-router'
 
 
-function Login() {
+function Login(props) {
   return (
     <Container>
+
+      {props.user && 
+        <Navigate to='/home' />
+      }
+
       <Nav>
         <a href='/'>
           <img src='/images/login-logo.svg' alt=''/>
@@ -19,7 +27,7 @@ function Login() {
           <img src='/images/login-hero.svg'/>
         </Hero>
         <Form>
-          <Google>
+          <Google onClick={props.signIn}>
             <img src='/images/google.svg' alt='' />
             Sign in with Google
           </Google>
@@ -51,7 +59,6 @@ const Nav = styled.nav`
     }
   }
   `
-
 
 const Join = styled.a`
   font-size: 16px;
@@ -170,4 +177,16 @@ const Google = styled.button`
   }
 `
 
-export default Login
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+
+  signIn: () => dispatch(signInApi())
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
