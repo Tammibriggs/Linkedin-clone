@@ -17,164 +17,152 @@ function Login(props) {
           <img src='/images/login-logo.svg' alt=''/>
         </a>
         <div>
-          <Join>Join now</Join>
-          <SignIn>SignIn</SignIn>
+          <SignIn onClick={props.signIn}>SignIn</SignIn>
         </div>
       </Nav>
       <Section>
         <Hero>
           <h1>Welcome to your Professional Community</h1>
-          <img src='/images/login-hero.svg'/>
-        </Hero>
-        <Form>
           <Google onClick={props.signIn}>
             <img src='/images/google.svg' alt='' />
             Sign in with Google
           </Google>
-        </Form>
+        </Hero>
+        <div className='image'>
+        <img src='https://static-exp1.licdn.com/sc/h/dxf91zhqd2z6b0bwg85ktm5s4'/>
+        </div>
       </Section>
     </Container>
   )
 }
 
 const Container = styled.div`
-  padding: 0px;
-`;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`
 
 const Nav = styled.nav`
-  max-width: 1128px;
-  margin: auto;
-  padding: 12px 0 16px;
   display: flex;
-  align-items: center;
-  position: relative;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  padding: 15px 0;
+  max-width: 1128px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
 
-  & > a {
-    width: 135px;
-    height: 34px;
-    @media (max-width: 768px){
-      padding: 0 5px;
+
+  a {
+    cursor: pointer;
+
+    img{
+      width: 84px;
+      height: 21px;
+
+      @media(min-width: 1160px){
+        width: 135px;
+        height: 34px;
+      }
     }
   }
-  `
 
-const Join = styled.a`
-  font-size: 16px;
-  padding: 10px 12px;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.6);
-  margin-right: 12px;
-  border-radius: 4px;
-
-  &:hover{
-    background-color: rgba(0,0,0,0.08);
-    color: rgba(0, 0, 0, 0.9);
-    text-decoration: none;
-  }
 `
 
 const SignIn = styled.a`
-  box-shadow: inset 0 0 0 1px #0a66c2; 
-  color: #0a66c2;
-  border-radius: 24px;
-  transition-duration: 167ms;
-  font-size: 16px;
+  padding: 8px 16px;
   font-weight: 600;
-  line-height: 40px;
-  padding: 10px 24px;
-  text-align: center;
-  background-color: rgba(0,0,0,0);
-
-  &:hover{
-    background-color: rgba(112, 181, 249, 0.15);
-    color: #0a66c2;
-    text-decoration: none;
-  }
+  box-shadow: inset 0 0 0 1px #0a66c2;
+  color: #0a66c2;
+  font-size: 18px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 24px;
 `
 
  const Section = styled.section`
-  align-content: start;
+  width: 95%;
+  margin: 0 auto;
   display: flex;
-  min-height: 700px;
-  padding-bottom: 138px;
-  padding-top: 40px; 
-  padding: 60px 0;
-  position: relative;
-  flex-wrap: wrap;
-  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 70px);
   max-width: 1128px;
-  align-items: center;
-  margin: auto;
-  @media(max-width: 768px){
-    margin: auto;
-    min-height: 0px;
-    justify-content: center;
-  } 
+  width: 100%;
+
+  .image {
+    text-align: center;
+    img {
+      width: 374px;
+      height: 214px;
+      margin: 0 auto;
+
+    @media(min-width: 772px){
+      width: 700px;
+      height: 560px;
+    }
+    }
+  }
+
+  @media(min-width: 772px){
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @media(min-width: 1160px){
+    height: calc(100vh - 80px);
+  }
+
  `
 
  const Hero = styled.div`
-  width: 100%;
+
+  margin-bottom: 30px;
+  
   h1 {
-    padding-bottom: 0;
-    width: 55%;
-    font-size: 56px;
-    font-weight: 200;
-    color: #2977c9;
-    line-height: 70px;
-    @media(max-width: 768px){
-      text-align: center;
-      font-size: 28px;
-      width: 100%;
-      line-height: 2;
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(143, 88, 73, 1);
+    line-height: 1.2;
+    padding-bottom: 24px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    @media(min-width: 772px){
+      font-size: 56px;
+      font-weight: 200;
     }
   }
 
-  img{
-    width: 700px;
-    height: 670px;
-    position: absolute;
-    bottom: -2px;
-    right: -150px;
-    @media(max-width: 768px){ 
-      top: 230px;
-      width: initial;
-      position: initial;
-      height: initial;
-      
-    }
+  @media(min-width: 772px){
+    padding-right: 72px;
+    flex-shrink: 0;
+    width: 55%;
+    max-width: 450px;
   }
+
  `
 
-const Form = styled.div`
-  margin-top: 100px;
-  width: 408px;
-  @media(max-width: 768px){
-    margin-top: 20px;
-  } 
-`
-
 const Google = styled.button`
+  box-sizing: border-box;
+  color: rgba(0,0,0,0.6);
+  font-size: 24px;
   display: flex;
   justify-content: center;
-  background-color: #fff;
   align-items: center;
-  height: 56px;
-  width: 100%;
+  background: inherit;
+  border: ; 
   border-radius: 28px;
-  box-shadow: inset 0 0 0 1px rgb(0, 0, 0/60%), inset 0 0 0 2px 
-  rgb(0, 0, 0/0%), inset 0, 0, 0 1px rgb(0,0, 0/0%);
-  vertical-align: middle;
-  z-index: 0;
-  transition-duration: 167ms;
-  font-size: 20px;
-  color: rgba(0,0,0,0.6);
-  &:hover{
-    background-color: rgba(207, 207, 207, 0.25);
-    color: rgba(0, 0, 0, 0.75); 
+  width: 100%;
+  height: 56px;
+  cursor: pointer;
+  border: 1px solid rgb(0 0 0 / 60%);
 
+  img {
+    margin-right: 24px;
+    width: 24px;
+    height: 24px;
   }
+
 `
 
 const mapStateToProps = (state) => {

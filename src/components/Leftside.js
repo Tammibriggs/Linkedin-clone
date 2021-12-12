@@ -172,6 +172,8 @@ const CommunityCard = styled(ArtCard)`
   text-align: left;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 76px;
   a {
     color: black;
     padding: 4px 12px 4px 12px;

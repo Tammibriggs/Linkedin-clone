@@ -12,12 +12,13 @@ function Header(props) {
             <img src='/images/home-logo.svg' alt=''/>
           </a>
         </Logo>
-        <Search >
+        <Search>
           <div>
             <input type='text' placeholder='Search'/>
           </div>
           <SearchIcon >
             <img src='/images/search-icon.svg' alt=''/>
+            <span>Search</span>
           </SearchIcon>
         </Search>
         <Nav>
@@ -71,10 +72,13 @@ function Header(props) {
               <a>
                 <img src='/images/nav-work.svg' alt=''/>
                 <span>
-                  Work <img src='/images/donw-icon.svg'/>
+                  Work <img src='/images/down-icon.svg'/>
                 </span>
               </a>
             </Work>
+            <TryPremium>
+              Get Hired faster, try premium Free
+            </TryPremium>
           </NavListWrap>
         </Nav>
       </Content>
@@ -86,11 +90,11 @@ const Container = styled.div`
   background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   left: 0;
-  padding: 0 24px;
   position: fixed;
   top: 0;
   width: 100vw;
   z-index: 100;
+  padding: 0 30px;
 `;
 
 const Content = styled.div`
@@ -99,7 +103,8 @@ const Content = styled.div`
   margin: 0 auto;
   min-height: 100%;
   max-width: 1128px;
-`;
+  padding: 0 20px;`;
+
 
 const Logo = styled.span`
   margin-right: 8px;
@@ -126,7 +131,15 @@ const Search = styled.div`
       height: 34px;
       border-color: #dce6f1;
       vertical-align: text-top;
+
+      @media(max-width: 1000px){
+        display: none;
+      }
     }
+  }
+
+  @media(max-width: 1000px){
+    flex-grow: 0;
   }
 `;
 
@@ -142,23 +155,48 @@ const SearchIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    @media(max-width: 1000px){
+      width: 24px;
+      height: 20px;
+    }
+  }
+
+  span{
+    display: none;
+
+    @media(max-width: 1000px){
+      display: unset;
+      font-size: 12px;
+    }
+
+    @media(max-width: 880px){
+      display: none;
+    }
+  }
+  @media(max-width: 1000px){
+    margin-left: 20px;
+    position: unset;
+    margin-right: 20px;
+    display: flex;
+    flex-direction:column;
+  }
 `;
 
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
-  @media (max-width: 768px) {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    background: white;
-    width: 100%;
+
+  @media(max-width: 1000px){
+    margin-left: unset;
   }
 `;
 
 const NavListWrap = styled.ul`
   display: flex;
   flex-wrap: nowrap;
+  align-items: center;
   list-style-type: none;
 
   .active{
@@ -208,6 +246,10 @@ const NavList = styled.li`
       color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
+
+      @media (max-width: 880px) {
+      display: none;
+    }
     }
     @media (max-width: 768px) {
       min-width: 70px;
@@ -262,6 +304,13 @@ const User = styled(NavList)`
 const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
+
+const TryPremium = styled.span`
+  max-width: 100px;
+  color: #915907;
+  font-weight: 400;
+  font-size: 14px;
+`
 
 const mapStateToProps = (state) => {
   return {

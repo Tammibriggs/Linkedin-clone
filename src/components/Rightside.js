@@ -118,6 +118,8 @@ const Recommendation = styled.a`
 `;
 
 const BannerCard = styled(FollowCard)`
+  position: sticky;
+  top: 76px;
   img {
     width: 100%;
     height: 100%;
